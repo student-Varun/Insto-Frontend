@@ -663,7 +663,7 @@ export default function Dashboard() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/posts");
+      const res = await axios.get("https://insto-backend-ulnb.onrender.com/api/posts");
       setPosts(res.data);
     } catch (error) {
       console.error("Failed to fetch posts:", error);
@@ -708,7 +708,7 @@ export default function Dashboard() {
     formData.append("image", form.image);
 
     try {
-      const response = await axios.post("http://localhost:8000/api/posts", formData);
+      const response = await axios.post("https://insto-backend-ulnb.onrender.com/api/posts", formData);
       const newPost = response.data;
       setPosts([newPost, ...posts]);
       setForm({ content: "", image: null });
@@ -721,7 +721,7 @@ export default function Dashboard() {
 
   const handleLike = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:8000/api/posts/${id}/like`);
+      const res = await axios.patch(`https://insto-backend-ulnb.onrender.com/api/posts/${id}/like`);
       setPosts((prev) =>
         prev.map((post) =>
           post._id === id ? { ...post, likes: res.data.likes, dislikes: res.data.dislikes } : post
@@ -734,7 +734,7 @@ export default function Dashboard() {
 
   const handleDislike = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:8000/api/posts/${id}/dislike`);
+      const res = await axios.patch(`https://insto-backend-ulnb.onrender.com/api/posts/${id}/dislike`);
       setPosts((prev) =>
         prev.map((post) =>
           post._id === id ? { ...post, likes: res.data.likes, dislikes: res.data.dislikes } : post
@@ -753,7 +753,7 @@ export default function Dashboard() {
     const text = commentText[postId]?.trim();
     if (!text) return;
     try {
-      const res = await axios.post(`http://localhost:8000/api/posts/${postId}/comments`, {
+      const res = await axios.post(`https://insto-backend-ulnb.onrender.com/api/posts/${postId}/comments`, {
         text,
       });
       const updatedComment = res.data;
@@ -773,7 +773,7 @@ export default function Dashboard() {
   const handleEditComment = async (postId, commentId, newText) => {
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/posts/${postId}/comments/${commentId}`,
+        `https://insto-backend-ulnb.onrender.com/api/posts/${postId}/comments/${commentId}`,
         { text: newText }
       );
       setPosts((prev) =>
@@ -796,7 +796,7 @@ export default function Dashboard() {
 
   const handleDeleteComment = async (postId, commentId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/posts/${postId}/comments/${commentId}`);
+      await axios.delete(`https://insto-backend-ulnb.onrender.com/api/posts/${postId}/comments/${commentId}`);
       setPosts((prev) =>
         prev.map((post) =>
           post._id === postId

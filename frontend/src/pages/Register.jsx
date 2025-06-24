@@ -29,7 +29,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/register-user", form);
+      await axios.post("https://insto-backend-ulnb.onrender.com/api/register-user", form);
       alert("Registration successful");
       navigate("/");
     } catch (err) {

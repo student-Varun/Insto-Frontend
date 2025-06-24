@@ -16,7 +16,7 @@ export default function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/forgot-password", { email });
+      await axios.post("https://insto-backend-ulnb.onrender.com/api/forgot-password", { email });
       alert("Reset link sent to your email");
     } catch (err) {
       alert(err.response?.data?.message || "Failed to send email");

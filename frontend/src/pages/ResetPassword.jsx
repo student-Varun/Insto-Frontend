@@ -25,7 +25,7 @@ export default function ResetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/reset-password", {
+      await axios.post("https://insto-backend-ulnb.onrender.com/api/reset-password", {
         ...form,
         token,
       });
